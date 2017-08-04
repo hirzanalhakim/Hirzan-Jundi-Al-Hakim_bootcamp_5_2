@@ -1,0 +1,95 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Event APP</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Event List</a></li>
+      <li><a href="/order">Add Event</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="taskname">Event Name:</label>
+      <input type="text" class="form-control" id="Name" placeholder="Enter Event Name" name="Name" [(ngModel)]="name">
+    </div>
+
+    <div class="form-group">
+      <label for="taskcategory">Date Event:</label>
+      <input type="text" class="form-control" id="Address" placeholder="Date Event" name="Date" [(ngModel)]="date">
+    </div>
+
+    <div class="form-group">
+      <label for="taskcategory">Ticket Price:</label>
+      <input type="text" class="form-control" id="Email" placeholder="Ticket Price" name="Price" [(ngModel)]="price">
+    </div>
+
+    <div class="form-group">
+      <label for="taskcategory">Ticket Amount:</label>
+      <input type="text" class="form-control" id="Email" placeholder="Ticket Amount" name="Amount" [(ngModel)]="amount">
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="add()"> Add Event </button>
+    <button (click)="toggleTitle()" class="btn btn-success"> clickhere</button>
+  </form>
+</div>
+
+
+<div class="container">
+  <table class="table ">
+    <thead>
+      <tr>
+        <th>EVENT NAME</th>
+        <th>EVENT DATE</th>
+        <th>TICKET PRICE</th>
+        <th>TICKET AMOUNT</th>
+        <th>BUY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of eventList">
+        <td>{{ e.name_event }}</td>
+        <td>{{ e.date_event }}</td>
+        <td>{{ e.ticket_price }}</td>
+        <td>{{ e.ticket_amount }}</td>
+        <td>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Buy Ticket</button>
+
+
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Buy Ticket</h4>
+                </div>
+
+                <div class="container">
+                  <label for="taskcategory">Input Email:</label>
+                  <input type="text" class="form-control" id="Email" placeholder="Input Email" name="Email" [(ngModel)]="email"
+                  style="margin-bottom:20px; width:500px">
+                  <button type="button" class="btn btn-primary" (click)="buy(e.id_event)">BUY NOW !</button>
+                </div>
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
